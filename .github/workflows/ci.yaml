@@ -9,6 +9,11 @@ on:
     branches:
       - main
 
+  permissions:
+  id-token: write
+  contents: read
+  packages: write    
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -39,6 +44,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+            
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::026090512708:role/GitHubActions-ECR-Role
+          aws-region: ap-south-2
 
       - name: Login to GHCR
         uses: docker/login-action@v3
