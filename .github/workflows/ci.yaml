@@ -9,10 +9,10 @@ on:
     branches:
       - main
 
-  permissions:
+permissions:
   id-token: write
   contents: read
-  packages: write    
+  packages: write
 
 jobs:
   test:
@@ -37,14 +37,10 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      packages: write
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-            
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
