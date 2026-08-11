@@ -60,7 +60,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            -t 026090512708.dkr.ecr.ap-south-2.amazonaws.com/github-actions-demo-repo:latest ..
+            -t 026090512708.dkr.ecr.ap-south-2.amazonaws.com/github-actions-demo-repo:latest .
 
       - name: Push Docker image to ECR
         run: |
